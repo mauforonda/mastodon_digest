@@ -15,10 +15,10 @@ A fork of [hodgesmr/mastodon_digest](https://github.com/hodgesmr/mastodon_digest
 ## To run your own
 
 1. Fork this repository
-2. Create repository secrets (`Settings` → `Secrets/Actions` → `New repository secrets`) for:
+2. Create repository secrets (`Settings` → `Secrets and variables` → `Actions` → `New repository secrets`) for:
   - `MASTODON_BASE_URL`: the url of your instance, like `https://mastodon.social`
   - `MASTODON_USERNAME`: your user name, like `Gargron`
-  - `MASTODON_TOKEN`: a token you request in your instance settings under `Preferences` → `Development`
+  - `MASTODON_TOKEN`: the access token you request in your instance settings under `Preferences` → `Development`
 3. Adjust the [github workflow](.github/workflows/update.yml) however you want
   - edit `cron` to define how often you want the digest to run
   - edit the command `python run.py -n 12 -s SimpleWeighted -t lax` with your own preferences for:
@@ -35,4 +35,7 @@ A fork of [hodgesmr/mastodon_digest](https://github.com/hodgesmr/mastodon_digest
                         Which post threshold criteria to use. lax = 90th percentile, normal
                         = 95th percentile, strict = 98th percentile (default: normal)
 ```
-4. Enable github actions under `Settings` → `Actions/General`,  run the action from the `Actions` tab and when it succeeds publish your digest by going to `Settings` → `Pages` and selecting to deploy from the `root` of the `gh-pages` branch. 
+4. Enable github actions under `Settings` → `Actions` → `General`
+5. Allow github actions to write to the repo under `Settings` → `Actions` → `General`, check `Read and write permissions` and Save
+6. Create the `gh-pages` branch
+7. Run the action from the `Actions` tab and when it succeeds publish your digest by going to `Settings` → `Pages` and selecting to deploy from the `root` of the `gh-pages` branch. 
